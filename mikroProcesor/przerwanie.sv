@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 /*
-    Przerwanie.
-    Moduł przerwanie realizuje mechanizm obsługi przerwań w procesorze. Wykrywa zbocza narastające sygnałów ext_int (zewnętrzne przerwanie) oraz timer_int (przerwanie z timera). Przerwania są rejestrowane i generowany jest sygnał przerwanie wraz z odpowiednim wektorem int_vector. Moduł posiada globalny bit zezwolenia na przerwania przerwanie_en, który może być ustawiany/zerowany przez sygnały int_enable oraz int_disable.
-
-    REQ_Przerwanie:
-        REQ_Przerwanie_1:
-            Moduł musi posiadać globalny bit zezwolenia na przerwania przerwanie_en, który jest ustawiany sygnałem int_enable i zerowany sygnałem int_disable, przy narastajacym zboczu zegara clk.
-        REQ_Przerwanie_2:
-            Moduł musi wykrywać narastające zbocze sygnału ext_int (przerwanie zewnętrzne) i zapamiętywać je w fladze int_a niezależnie od stanu przerwanie_en.
-        REQ_Przerwanie_3:
-            Moduł musi wykrywać narastające zbocze sygnału timer_int (przerwanie timera) i zapamiętywać je w fladze int_b tylko wtedy, gdy przerwanie_en = 1.
-        REQ_Przerwanie_4:
-            Priorytet przerwań jest następujący:
-            jeśli int_a = 1 oraz przerwanie_en = 1, to generowane jest przerwanie z wektorem 8'h02 (przerwanie zewnętrzne).
-            jeśli int_a = 0, a int_b = 1 oraz przerwanie_en = 1, to generowane jest przerwanie z wektorem 8'h04 (przerwanie timera).
-        REQ_Przerwanie_5
-            Jeśli przerwanie zewnętrzne (int_a) zostanie wykryte w czasie, gdy trwa przerwanie timera (int_b), to przerwanie zewnętrzne ma zostać zapamiętane i wykonane jako pierwsze po zakończeniu przerwania timera (priorytet).
-        REQ_Przerwanie_6
-            Po wygenerowaniu przerwania odpowiednia flaga (int_a lub int_b) musi zostać wyzerowana.
-        REQ_Przerwanie_7:
-            Reset (rst) musi zerować wszystkie wewnętrzne flagi i rejestry.
 
 Przerwanie bez masek i priorytet ma zewnetrzne przerwanie nad licznikiem
 To idzie najpierw do ID a potem do pc z ID idzie       

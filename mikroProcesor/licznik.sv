@@ -1,33 +1,7 @@
 `timescale 1ns / 1ps
 ///////////////////////////////////////////////////////////////////////////
 /*
-    Licznik.
-    Moduł licznik realizuje programowalny, 16-bitowy licznik sprzętowy z preskalerem, obsługą dwóch trybów pracy oraz możliwością generowania przerwań. Licznik może pracować w trybie przepełnienia lub w trybie porównania z zaprogramowaną wartością maksymalną. Moduł umożliwia dynamiczną konfigurację preskalera, włączanie i wyłączanie przerwań oraz sterowanie pracą licznika poprzez rejestr kontrolny. W przypadku wystąpienia zdarzenia licznika generowana jest flaga statusowa oraz opcjonalnie sygnał przerwania do systemu przerwań procesora.
 
-    REQ_Licznik:
-        REQ_Licznik_1:
-            Moduł musi realizować 16-bitowy licznik taktowany sygnałem clk, którego praca jest sterowana sygnałem licznik_enable.
-        REQ_Licznik_2:
-            Po aktywacji sygnału reset (rst) licznik, preskaler, flagi oraz rejestry konfiguracyjne muszą zostać wyzerowane w jednym cyklu zegarowym.
-        REQ_Licznik_3:
-            Moduł musi umożliwiać konfigurację preskalera, trybu pracy, włączenia licznika oraz włączenia przerwań poprzez zapis do rejestru sterującego (zapisz_ctr).
-        REQ_Licznik_4:
-            Moduł musi umożliwiać zapis 16-bitowej wartości progowej licznika (wartosc_max) w dwóch etapach: dolnego bajtu (zapisz_L) oraz górnego bajtu (zapisz_H).
-        REQ_Licznik_5:
-            Jeżeli licznik jest włączony (licznik_enable = 1), moduł musi inkrementować licznik zgodnie z ustawioną wartością preskalera.
-        REQ_Licznik_6:
-            W trybie przepełnienia (tryb = 1) moduł musi generować zdarzenie po osiągnięciu przez licznik wartości maksymalnej (0xFFFF), zerować licznik oraz ustawiać flagę licznik_flaga.
-        REQ_Licznik_7:
-            W trybie porównania (tryb = 0) moduł musi generować zdarzenie po osiągnięciu przez licznik zaprogramowanej wartości maksymalnej (wartosc_max), zerować licznik oraz ustawiać flagę licznik_flaga.
-        REQ_Licznik_8:
-            W przypadku wystąpienia zdarzenia licznika, moduł musi wygenerować sygnał przerwania (licznik_int) tylko wtedy, gdy przerwania są włączone (int_enable = 1).
-        REQ_Licznik_9:
-            Flaga zdarzenia licznika (licznik_flaga) musi pozostać ustawiona do momentu jej skasowania sygnałem licznik_flaga_clear.
-        REQ_Licznik_10:
-            Jeżeli licznik jest wyłączony (licznik_enable = 0), licznik oraz sygnały przerwania i flagi muszą pozostawać wyzerowane.
-        REQ_Licznik_11:
-            Wszystkie operacje modułu muszą być realizowane synchronicznie z narastającym zboczem sygnału zegarowego clk.
-        
 Licznik 16bitowy. L i H po 8bit
 generowanie przerwan jak przepelnienie. zlicznaie w góre
 rejestr:

@@ -1,30 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-/*
-  Flagi.
-  Moduł flagi realizuje rejestr flag procesora, przechowujący informacje o wyniku ostatniej operacji wykonywanej przez jednostkę arytmetyczno-logiczną. Aktualizacja flag odbywa się synchronicznie z zegarem i jest kontrolowana sygnałami sterującymi, co umożliwia selektywne zapisywanie oraz kasowanie poszczególnych flag w zależności od rodzaju wykonywanej instrukcji. Moduł udostępnia aktualny stan flag do wykorzystania przez jednostkę dekodera procesora.
-  
-  REQ_Flagi:
-    REQ_Flagi_1:
-      Moduł musi przechowywać zestaw flag statusowych procesora w postaci rejestru synchronizowanego sygnałem zegarowym clk.
-    REQ_Flagi_2:
-      Po aktywacji sygnału reset (rst) wszystkie flagi statusowe muszą zostać wyzerowane w jednym cyklu zegarowym.
-    REQ_Flagi_3:
-      Aktualizacja flag statusowych musi następować wyłącznie wtedy, gdy sygnał zapisu flag (flagi_en) jest aktywny.
-    REQ_Flagi_4:
-      Dla operacji arytmetycznych, przy aktywnym sygnale C_OV_en, moduł musi aktualizować flagę przeniesienia (C) oraz flagę przepełnienia (OV) na podstawie sygnałów wejściowych C_in i OV_in.
-    REQ_Flagi_5:
-      Dla operacji logicznych, przy aktywnym sygnale C_OV_kasowanie, moduł musi kasować flagę przeniesienia (C) oraz flagę przepełnienia (OV).
-    REQ_Flagi_6:
-      Flagi parzystości (P), zera (Z) oraz znaku (S) muszą być aktualizowane na podstawie sygnałów wejściowych P_in, Z_in i S_in przy każdej aktywacji zapisu flag.
-    REQ_Flagi_7:
-      Jeżeli sygnał flagi_en jest nieaktywny, stan wszystkich flag musi pozostać niezmieniony.
-    REQ_Flagi_8:
-      Aktualny stan każdej z flag musi być stale dostępny na odpowiednich wyjściach modułu.
-    REQ_Flagi_9:
-      Wszystkie operacje zapisu i kasowania flag muszą być realizowane synchronicznie z narastającym zboczem sygnału zegarowego clk. 
 
-*/
 //////////////////////////////////////////////////////////////////////////////////
 
 module flagi(

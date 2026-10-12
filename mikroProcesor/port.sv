@@ -1,30 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-/*
-    Port.
-    Moduł port implementuje porty wejścia/wyjścia (GPIO) z rejestrami kierunku (DDR) i rejestrami danych (PORT). Umożliwia sterowanie kierunkiem pracy poszczególnych pinów (wejście/wyjście) oraz odczyt wartości z fizycznych pinów. Dodatkowo moduł umożliwia wybór, z którego portu/pinu ma być pobierana wartość na wyjście out (do ALU).
 
-    REQ_Port:
-        REQ_Port_1: 
-            Moduł ma posiadać trzy porty logiczne (A, B, C), każdy o szerokości Port_rozm_data bitów.
-        REQ_Port_2: 
-            Dla każdego portu istnieje rejestr kierunku DDRx.
-            Wartość bitu DDRx[i] = 1 oznacza, że pin i jest w trybie wyjścia (output).
-            Wartość bitu DDRx[i] = 0 oznacza, że pin i jest w trybie wejścia (input).
-        REQ_Port_3: 
-            Rejestry DDR są zapisywane podczas zbocza narastającego zegara clk tylko jeśli wr_DDRx = 1. Adres rejestru DDR wybierany jest przez nr_P_DDRx.
-        REQ_Port_4:
-            Moduł posiada rejestry danych PORTx dla każdego portu. Rejestry PORTx są zapisywane podczas zbocza narastającego zegara clk tylko jeśli wr_PORTx = 1. Adres rejestru PORT wybierany jest przez nr_P_PORTx.
-        REQ_Port_5: 
-            Wartości rejestrów DDR i PORT są resetowane przy rst = 1, na narastajacym zboczu zegara clk:
-        REQ_Port_6: 
-            Dla każdego pinu portu:
-            jeśli DDRx[i] = 1, to pin fizyczny in_out_X[i] jest sterowany przez wartość PORTx[i] (tryb output).
-            jeśli DDRx[i] = 0, to pin fizyczny in_out_X[i] jest w stanie wysokiej impedancji ('z'), a wartość logiczna pinu jest odczytywana na pin_mux.
-        REQ_Port_7: 
-            Odczyt wartości pinów w trybie wejścia (DDR=0) jest realizowany asynchronicznie i jest dostępny na out w zależności od wybranego portu/pinu.
-                
-*/ 
 //////////////////////////////////////////////////////////////////////////////////
 
 

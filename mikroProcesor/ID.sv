@@ -1,32 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-/*
-    Dekoder rozkazow.
-    Moduł ID odpowiada za dekodowanie instrukcji maszynowych oraz generowanie sygnałów sterujących dla wszystkich podsystemów procesora. Na podstawie kodu instrukcji oraz aktualnego stanu flag, stosu, licznika i systemu przerwań, moduł decyduje o wykonaniu operacji arytmetyczno-logicznych, dostępie do pamięci i portów I/O, obsłudze skoków, przerwań oraz mechanizmów stosu i timera.
 
-    REQ_Dekoder:
-        REQ_Dekoder_1:
-            Moduł ID musi dekodować instrukcję maszynową na podstawie pola operacji zawartego w rozkazie.
-        REQ_Dekoder_2:
-            Moduł ID musi generować sygnały sterujące umożliwiające wykonanie operacji arytmetycznych i logicznych przez jednostkę ALU.
-        REQ_Dekoder_3:
-            Moduł ID musi umożliwiać wybór źródła danych operandu, w tym wartości natychmiastowej, rejestru, pamięci oraz portów wejścia–wyjścia.
-        REQ_Dekoder_4:
-            Moduł ID musi obsługiwać instrukcje zapisu i odczytu danych do rejestrów, pamięci oraz portów I/O.
-        REQ_Dekoder_5:
-            Moduł ID musi obsługiwać instrukcje skoku bezwarunkowego oraz warunkowego w oparciu o aktualny stan flag procesora.
-        REQ_Dekoder_6:
-            Moduł ID musi obsługiwać mechanizm stosu danych oraz stosu adresów powrotu, w tym wykrywanie przepełnienia i niedomiaru stosu.
-        REQ_Dekoder_7:
-            Moduł ID musi obsługiwać system przerwań, w tym przyjmowanie przerwania, zapis adresu powrotu na stos oraz skok do wektora przerwania.
-        REQ_Dekoder_8:
-            Moduł ID musi umożliwiać konfigurację i obsługę licznika czasowego, w tym zapis rejestrów sterujących oraz reakcję na flagę licznika.
-        REQ_Dekoder_9:
-            Moduł ID musi generować sygnały sterujące flagami procesora w zależności od typu wykonywanej instrukcji.
-        REQ_Dekoder_10:
-            W przypadku wykrycia sytuacji wyjątkowych, takich jak przepełnienie stosu, moduł ID musi wygenerować odpowiednią reakcję systemową.
-
-*/
 //////////////////////////////////////////////////////////////////////////////////
 
 module ID#(
