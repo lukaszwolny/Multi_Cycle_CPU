@@ -1,0 +1,45 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Oct 10 16:49:43 2026
+[*]
+[dumpfile] "A:\mikro_procek_moje\Mikroprocesor\mikroProcesor\tb\procesor_tb.vcd"
+[dumpfile_mtime] "Sat Oct 10 16:48:25 2026"
+[dumpfile_size] 109456
+[savefile] "A:\mikro_procek_moje\Mikroprocesor\mikroProcesor\tb\wave.gtkw"
+[timestart] 0
+[size] 1920 1009
+[pos] -1 -1
+*-15.800595 50000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] procesor_tb.
+[treeopen] procesor_tb.u_procesor.
+[treeopen] procesor_tb.u_procesor.u_pc_stos.
+[treeopen] procesor_tb.u_rejestry.
+[sst_width] 197
+[signals_width] 303
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@28
+procesor_tb.u_procesor.u_pc.clk
+procesor_tb.u_procesor.u_pc.rst
+@24
+procesor_tb.u_procesor.u_ID.state[4:0]
+@29
+procesor_tb.u_procesor.u_pc.i_pc_en
+@24
+procesor_tb.u_procesor.u_pc.pc_count_s[7:0]
+procesor_tb.u_procesor.u_pc.PC_count[7:0]
+@28
+procesor_tb.u_procesor.u_ID.ID_rst
+@24
+procesor_tb.u_procesor.u_pamiec_prog.a[7:0]
+@28
+procesor_tb.u_procesor.u_pamiec_prog.out[15:0]
+procesor_tb.u_procesor.u_akumulator.A_ce
+@24
+procesor_tb.u_procesor.u_akumulator.a[7:0]
+procesor_tb.u_procesor.u_akumulator.akum[7:0]
+procesor_tb.u_rejestry.dane[7:0]
+procesor_tb.u_rejestry.nr_Rx[2:0]
+procesor_tb.u_rejestry.out[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

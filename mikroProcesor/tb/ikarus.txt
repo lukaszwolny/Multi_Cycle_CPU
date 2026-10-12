@@ -1,0 +1,2 @@
+
+iverilog -g2012 -o procesor_tb.vvp ../Akumulator.sv ../ALU.sv ../ID.sv ../pamiec_data.sv ../pamiec_prog.sv ../pc.sv ../port.sv ../procesor.sv ../Rejestry.sv ../flagi.sv ../stos.sv ../przerwanie.sv ../licznik.sv procesor_tb.sv
